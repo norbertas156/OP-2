@@ -2,82 +2,90 @@
 #include "Studentai.cpp"
 
 
-// void Ivedimas(Studentai & stud){
+void Ivedimas(vector<Studentai> &stud){
 
-//   string vardas;
-//   string pavarde;
+  string vardas;
+  string pavarde;
 
-//   unsigned seed =std::chrono::system_clock::now().time_since_epoch().count();
-// 	std::mt19937 generator(seed);
-// 	std::uniform_int_distribution<int> distribution(1, 10);
-//   int kiekis=0;
-//   int pazymiuSk;
-//   cout<<"Iveskite studento varda"<<endl;
-//   cin>>vardas;
-//   cout<<"Iveskite studento pavarde"<<endl;
-//   cin>>pavarde;
-//   Studentai studentai(vardas, pavarde);
-//   cout<<"Ar studento pazymiu skaicius yra zinomas ? Iveskite:(t-taip, n-ne)"<<endl;
-//   char ats = RaidesTikrinimas('t','n');
-//       if(ats=='t'){
-//         cout<<"Iveskite pazymiu skaiciu"<<endl;
-//         pazymiuSk = SkaiciausTikrinimams();
-//         cout<<"Ar norite, kad pazymiai ir egzamino pazymys butu sugeneruoti ar rasomi ranka? Ivestike:(t-sugeneruoti, n-ivesti ranka)"<<endl;
-//         ats = RaidesTikrinimas('t','n');
-//         if(ats == 't'){
-//           for (int j = 0; j < pazymiuSk; j++)
-//           {
-//             int pazymys = distribution(generator);
-//             stud.pazymiai.insert(stud.pazymiai.begin(), pazymys);
-//             cout<<j+1<<"-as sugeneruotas pazymys "<<stud.pazymiai[0]<<" ; ";
-//           }
-//           cout<<endl;
-//           stud.egzaminas=distribution(generator);
-//           cout<<"Egzamino sugeneruotas pazymys: "<<stud.egzaminas<<endl;
-//         } else if(ats == 'n'){
-//           for(int j = 0; j < pazymiuSk;j++){
-//           cout<<"Iveskite "<<j+1<< "-a(-i) pazymi:"<<endl;
-//             stud.pazymiai.insert(stud.pazymiai.begin(), PazymioTikrinimas());
-//           }
-//           cout<<"Iveskite Egzamino rezultata: "<<endl;
-//           stud.egzaminas = PazymioTikrinimas();
-//         }  
-//       }
-//       else if(ats=='n'){
-//           char paz = 't';
-//           int kiekis = 0;
-//         cout<<"Ar norite, kad pazymiai ir egzamino pazymys butu sugeneruoti ar rasomi ranka? Ivestike:(t-sugeneruoti, n-ivesti ranka)"<<endl;
-//         ats = RaidesTikrinimas('t','n');
-//         if(ats == 't'){
-//             while(paz != 'n'){
-//               int pazymys = distribution(generator);
-//               stud.pazymiai.insert(stud.pazymiai.begin(),pazymys);
-//               cout<<kiekis + 1<<"-as sugeneruotas pazymys = "<<stud.pazymiai[0]<<endl;
-//               kiekis++;
-//               cout<<"Ar norite sugeneruoti dar viena pazymi? Iveskite:(t-taip, n-ne)"<<endl;
-//               paz = RaidesTikrinimas('t','n');
-//               if(paz == 'n')
-//               break;
-//             }
-//             stud.EgzaminoPaz(distribution(generator));
-//           cout<<"Egzamino sugeneruotas pazymys: "<<stud.egzaminas<<endl;
-//         }else if(ats == 'n'){
-//             while(paz != 'n'){
-//               cout<<"Ivskite "<<kiekis+1<<"-a(-i) pazymi: "<<endl;
-//             stud.pazymiai.insert(stud.pazymiai.begin(),PazymioTikrinimas());
-//             kiekis++;
-//             cout<<"Ar norite dar ivesti pazymiu? Iveskite:(t-taip, n-ne)"<<endl;
-//             paz = RaidesTikrinimas('t','n');
-//             if(paz == 'n')
-//             break;
-//             }
-//             cout<<"Iveskite Egzamino rezultata: "<<endl;
-//             studentai.EgzaminoPaz(PazymioTikrinimas());
-//         }    
-//       };
-//        studentai.ApskaiciuotiVidurki();
-//        studentai.ApskaiciuotiMediana();
-// }
+  unsigned seed =std::chrono::system_clock::now().time_since_epoch().count();
+	std::mt19937 generator(seed);
+	std::uniform_int_distribution<int> distribution(1, 10);
+
+  int kiekis=0;
+  int pazymiuSk;
+  int pazymys;
+  cout<<"Iveskite studento varda"<<endl;
+  cin>>vardas;
+  cout<<"Iveskite studento pavarde"<<endl;
+  cin>>pavarde;
+  Studentai studentai(vardas, pavarde);
+
+  cout<<"Ar studento pazymiu skaicius yra zinomas ? Iveskite:(t-taip, n-ne)"<<endl;
+  char ats = RaidesTikrinimas('t','n');
+      if(ats=='t'){
+        cout<<"Iveskite pazymiu skaiciu"<<endl;
+        pazymiuSk = SkaiciausTikrinimams();
+        cout<<"Ar norite, kad pazymiai ir egzamino pazymys butu sugeneruoti ar rasomi ranka? Ivestike:(t-sugeneruoti, n-ivesti ranka)"<<endl;
+        ats = RaidesTikrinimas('t','n');
+        if(ats == 't'){
+          for (int j = 0; j < pazymiuSk; j++)
+          {
+            int pazymys = distribution(generator);
+            studentai.IrasytiPazymius(pazymys);
+            cout<<j+1<<"-as sugeneruotas pazymys "<<pazymys<<" ; ";
+          }
+          cout<<endl;
+          pazymys = distribution(generator);
+          studentai.EgzaminoPaz(pazymys) ;
+          cout<<"Egzamino sugeneruotas pazymys: "<<pazymys<<endl;
+        } else if(ats == 'n'){
+          for(int j = 0; j < pazymiuSk;j++){
+          cout<<"Iveskite "<<j+1<< "-a(-i) pazymi:"<<endl;
+            studentai.IrasytiPazymius(PazymioTikrinimas());
+          }
+          cout<<"Iveskite Egzamino rezultata: "<<endl;
+          pazymys = PazymioTikrinimas();
+          studentai.EgzaminoPaz(pazymys);
+        }  
+      }
+      else if(ats=='n'){
+          char paz = 't';
+          int kiekis = 0;
+        cout<<"Ar norite, kad pazymiai ir egzamino pazymys butu sugeneruoti ar rasomi ranka? Ivestike:(t-sugeneruoti, n-ivesti ranka)"<<endl;
+        ats = RaidesTikrinimas('t','n');
+        if(ats == 't'){
+            while(paz != 'n'){
+              int pazymys = distribution(generator);
+              studentai.IrasytiPazymius(pazymys);
+              cout<<kiekis + 1<<"-as sugeneruotas pazymys = "<<pazymys<<endl;
+              kiekis++;
+              cout<<"Ar norite sugeneruoti dar viena pazymi? Iveskite:(t-taip, n-ne)"<<endl;
+              paz = RaidesTikrinimas('t','n');
+              if(paz == 'n')
+              break;
+            }
+            pazymys = distribution(generator);
+            studentai.EgzaminoPaz(pazymys);
+          cout<<"Egzamino sugeneruotas pazymys: "<<pazymys<<endl;
+        }else if(ats == 'n'){
+            while(paz != 'n'){
+              cout<<"Ivskite "<<kiekis+1<<"-a(-i) pazymi: "<<endl;
+              pazymys = PazymioTikrinimas();
+            studentai.IrasytiPazymius(pazymys);
+            kiekis++;
+            cout<<"Ar norite dar ivesti pazymiu? Iveskite:(t-taip, n-ne)"<<endl;
+            paz = RaidesTikrinimas('t','n');
+            if(paz == 'n')
+            break;
+            }
+            cout<<"Iveskite Egzamino rezultata: "<<endl;
+            studentai.EgzaminoPaz(PazymioTikrinimas());
+        }    
+      };
+       studentai.ApskaiciuotiVidurki();
+       studentai.ApskaiciuotiMediana();
+       stud.push_back(studentai);
+}
 
 void SkaitymasIsFailo(vector<Studentai> &stud){
   bool good = false;
@@ -138,7 +146,6 @@ void SkaitymasIsFailo(vector<Studentai> &stud){
         
         studentai.ApskaiciuotiVidurki();
        studentai.ApskaiciuotiMediana();
-       //studentai.pazymiai.clear();
         stud.push_back(studentai);
       }        
   }

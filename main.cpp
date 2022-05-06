@@ -14,7 +14,7 @@ int main(){
   char raide = RaidesTikrinimas('i','s');
 if(raide == 'i'){
   while(tikrinimas != 'n'){
-  //Ivedimas(student);
+  Ivedimas(student);
   cout<<"Ar dar bus studentu ? Iveskite: (t-taip, n-ne)"<<endl;
   tikrinimas = RaidesTikrinimas('t','n');
   if(tikrinimas == 'n')

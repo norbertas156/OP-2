@@ -12,8 +12,14 @@ class Studentai{
     double vidurkis_;
     double mediana_;
     public:
+
     Studentai(): egzaminas_(0){}
+
+    ~Studentai();
+
     Studentai(const string &vardas, const string &pavarde);
+    Studentai& operator = (const Studentai& studentai);
+
     inline string vardas() const {return vardas_;}
     inline string pavarde() const {return pavarde_;}
     inline vector<float> getPazymiai() const {return pazymiai_;}

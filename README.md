@@ -119,3 +119,5 @@ Programa buvo realizuota VS Code platformoje, todėl paleidimas yra toks:
 | Duomenų nuskaitymas   | 0.0059969 s | 0.0599591 s | 0.311255 s | 3.07446 s  | 41.3157 s |
 | Paskirstymas į grupes | 0.0010076 s | 0.0040604 s | 0.0329989 s| 0.344764 s | 4.3287 s  |
 | Duomenų įrašymas      | 0.0869359 s | 0.0329617 s | 0.23264  s | 2.37442  s | 32.0534 s |
+## Objektinio programavimo v1.2 užduotis
+1. Implementuota Rule of three metodas

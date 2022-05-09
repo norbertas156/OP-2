@@ -26,10 +26,8 @@ Studentai& Studentai::operator=(const Studentai& studentai){
     return *this;
 }
 
-Studentai::Studentai(const string &vardas, const string &pavarde){
-    vardas_=vardas;
-    pavarde_=pavarde;
-}
+const string &Studentai::vardas() const {return vardas_;}
+const string &Studentai::pavarde() const {return pavarde_;}
 
 
 void Studentai::IrasytiPazymius(int pazymys){

@@ -2,26 +2,39 @@
 
 #include "Library.h"
 
-
-class Studentai{
-    private:
+class Zmogus{
+    protected:
     string vardas_;
     string pavarde_;
+    public:
+    explicit Zmogus(){
+        vardas_="";
+        pavarde_="";
+    };
+    explicit Zmogus(const string &vardas,const string &pavarde){
+    vardas_=vardas;
+    pavarde_=pavarde;
+    };
+    virtual const string &vardas() const=0;
+    virtual const string &pavarde() const=0;
+};
+
+class Studentai: public Zmogus{
+    private:
     float egzaminas_;
     vector <float> pazymiai_;
     double vidurkis_;
     double mediana_;
     public:
-
     Studentai(): egzaminas_(0){}
 
     ~Studentai();
     Studentai(const Studentai& studentai);
     Studentai& operator = (const Studentai& studentai);
 
-    Studentai(const string &vardas, const string &pavarde);
-    inline string vardas() const {return vardas_;}
-    inline string pavarde() const {return pavarde_;}
+    explicit Studentai(const string &vardas, const string &pavarde):Zmogus(vardas, pavarde){};
+    const string &vardas() const override;
+    const string &pavarde() const override;
     inline vector<float> getPazymiai() const {return pazymiai_;}
     inline double StudentoVidurkis() const {return vidurkis_;}
     inline double StudentoMediana() const {return mediana_;}

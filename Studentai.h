@@ -16,10 +16,10 @@ class Studentai{
     Studentai(): egzaminas_(0){}
 
     ~Studentai();
-
-    Studentai(const string &vardas, const string &pavarde);
+    Studentai(const Studentai& studentai);
     Studentai& operator = (const Studentai& studentai);
 
+    Studentai(const string &vardas, const string &pavarde);
     inline string vardas() const {return vardas_;}
     inline string pavarde() const {return pavarde_;}
     inline vector<float> getPazymiai() const {return pazymiai_;}

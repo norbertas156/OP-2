@@ -4,6 +4,15 @@
 
 Studentai::~Studentai() = default;
 
+Studentai::Studentai(const Studentai& studentai){
+    vardas_=studentai.vardas_;
+    pavarde_=studentai.pavarde_;
+    vidurkis_=studentai.vidurkis_;
+    egzaminas_=studentai.egzaminas_;
+    mediana_=studentai.mediana_;
+    pazymiai_=studentai.pazymiai_;
+}
+
 Studentai& Studentai::operator=(const Studentai& studentai){
     if(&studentai == this) return *this;
 
@@ -13,6 +22,7 @@ Studentai& Studentai::operator=(const Studentai& studentai){
     egzaminas_ = studentai.egzaminas_;
     vidurkis_ = studentai.vidurkis_;
     mediana_ = studentai.mediana_;
+    
     return *this;
 }
 

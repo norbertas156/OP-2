@@ -123,3 +123,7 @@ Programa buvo realizuota VS Code platformoje, todėl paleidimas yra toks:
 1. Implementuota Rule of three metodas
 ## Objektinio programavimo v1.5 užduotis
 1. Implementuota Zmogaus klasė kuri saugoja vardus ir pavardes
+## Objektinio programavimo v2.0 užduotis
+1. Pridėta doxygen dokumentacija
+2. Pridėti du catch testai
+3. Įdėtas setup failas
